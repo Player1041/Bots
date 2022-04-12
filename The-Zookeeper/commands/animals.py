@@ -119,4 +119,4 @@ class Animals(commands.Cog):
 
 def setup(bot):
     bot.add_cog(Animals(bot))
-    print("| Loaded the Animals")
+    print("| Loaded Animals")
