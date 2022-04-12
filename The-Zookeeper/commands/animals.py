@@ -42,7 +42,6 @@ class Animals(commands.Cog):
         """Displays an Animal photo."""
         if animal == "random":
             animal = random.choice(list(AnimalsOpt))
-            print(type(animal))
         if animal == "duck":
             async with aiohttp.ClientSession() as session:
                 async with session.get("https://random-d.uk/api/v2/random") as resp:
