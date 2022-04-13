@@ -13,7 +13,7 @@ bot = commands.Bot(
     reload = True,
     test_guilds = [951289542684590140])
     
-#bot.load_extensions("commands")
+bot.load_extensions("commands")
 
 @bot.event
 async def on_ready():
