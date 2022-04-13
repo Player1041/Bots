@@ -12,8 +12,9 @@ class Roles(commands.Cog):
         pass
     
     @role.sub_command()
-    async def add(self, inter, roles: [role for role in guild.roles if role.is_assignable()], member: disnake.Member, reason: str = None):
-        """Assigns a role to a member.
+    async def add(self, inter, role: disnake.Role, member: disnake.Member, reason: str = None):
+        """
+        Assigns a role to a member.
         
         Parameters
         ----------
