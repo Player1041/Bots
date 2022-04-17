@@ -47,7 +47,8 @@ class Animals(commands.Cog):
                 async with session.get("https://random-d.uk/api/v2/random") as resp:
                     data = json.loads(await resp.text())
                     duckEmbed = disnake.Embed(
-                        title = "Duck!"
+                        title = "Duck!",
+                        colour = disnake.Colour.random()
                     ).set_image(
                         url = data['url']
                     ).set_footer(
@@ -58,7 +59,8 @@ class Animals(commands.Cog):
                 async with session.get("https://randomfox.ca/floof") as resp:
                     data = json.loads(await resp.text())
                     foxEmbed = disnake.Embed(
-                        title = "Fox!"
+                        title = "Fox!",
+                        colour = disnake.Colour.random()
                     ).set_image(
                         url = data['image']
                     ).set_footer(
@@ -69,7 +71,8 @@ class Animals(commands.Cog):
                 async with session.get("http://axoltlapi.herokuapp.com") as resp:
                     data = await resp.json()
                     axoEmbed = disnake.Embed(
-                        title = "Axolotl!"
+                        title = "Axolotl!",
+                        colour = disnake.Colour.random()
                         ).set_image(
                             url = data["url"]
                         ).set_footer(
@@ -80,7 +83,8 @@ class Animals(commands.Cog):
                 async with session.get("https://random.dog/woof.json") as resp:
                     data = json.loads(await resp.text())
                     dogEmbed = disnake.Embed(
-                    title = "Dog!"
+                    title = "Dog!",
+                    colour = disnake.Colour.random()
                     ).set_image(
                         url = data['url']
                     ).set_footer(
@@ -91,7 +95,8 @@ class Animals(commands.Cog):
                 async with session.get(f"https://api.thecatapi.com/v1/images/search?api_key={cat_auth}") as resp:
                     data = json.loads(await resp.text())
                     catEmbed = disnake.Embed(
-                    title = "Cat!"
+                    title = "Cat!",
+                    colour = disnake.Colour.random()
                     ).set_image(
                         url = data[0]['url']
                     ).set_footer(
@@ -102,7 +107,8 @@ class Animals(commands.Cog):
                 async with session.get("https://api.bunnies.io/v2/loop/random/?media=gif,png") as resp:
                     data = json.loads(await resp.text())
                     bunnyEmbed = disnake.Embed(
-                    title = "Bunny!"
+                    title = "Bunny!",
+                    colour = disnake.Colour.random()
                     ).set_image(
                         url = data['media']['gif']
                     ).set_footer(
@@ -110,7 +116,8 @@ class Animals(commands.Cog):
                     await inter.response.send_message(embed = bunnyEmbed)
         elif animal == "otter":
             otterEmbed = disnake.Embed(
-            title = "Otter!"
+            title = "Otter!",
+            colour = disnake.Colour.random()
             ).set_image(
             url = f"https://otter-pics.up.railway.app/?huh={hash(time.time())}"
             ).set_footer(

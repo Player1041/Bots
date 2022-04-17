@@ -121,9 +121,6 @@ class Roles(commands.Cog):
         await member.remove_roles(role, reason=f": {reason}")
         await inter.response.send_message(embed = roleEmbed)
 
-    
-    
-    
 def setup(bot):
     bot.add_cog(Roles(bot))
     print("Loaded Role Management.")
