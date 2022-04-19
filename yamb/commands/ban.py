@@ -7,7 +7,7 @@ class Ban(commands.Cog):
         self.bot = bot
 
     @commands.slash_command()
-    async def ban (self, inter, member: disnake.Member, delete: commands.Range[0,7], reason: str = None):
+    async def ban(self, inter, member: disnake.Member, delete: commands.Range[0,7], reason: str = None):
         """
         Bans a member.
         

@@ -10,7 +10,14 @@ class Kick(commands.Cog):
     
     @commands.slash_command()
     async def kick(self, inter, member: disnake.Member, reason: str = None):
+        """
+        Kicks a member.
         
+        Parameters
+        ----------
+        member: The member you want to kick.
+        reason: Displays in audit logs (optional)
+        """
         kickEmbed = disnake.Embed(
             title = "Kicked Successfully",
             description = f"{inter.author.mention} / {inter.author} has successfully kicked {member} from the server.",
@@ -27,22 +34,22 @@ class Kick(commands.Cog):
             colour = disnake.Colour.random()
             )
         hierEmbed = disnake.Embed(
-            title = "Failed to kick: Hierarchy Error",
+            title = "Failed to Kick: Hierarchy Error",
             description = f"You ({inter.author.mention} / {inter.author}) do not have a role high enough to kick {member.mention} / {member}. Get a higher role and try again.",
             colour = disnake.Colour.random()
             )
         selfHierEmbed = disnake.Embed(
-            title = "Failed to kick: Hierarchy Error",
+            title = "Failed to Kick: Hierarchy Error",
             description = f"I do not have a role high enough to kick {member.mention} / {member}. Give me a higher role and try again.",
             colour = disnake.Colour.random()
             )
         kickSelfEmbed = disnake.Embed(
-            title = "Failed to kick: That's You!",
+            title = "Failed to Kick: That's You!",
             description = "You can't kick yourself. Choose a different member and try again.",
             colour = disnake.Colour.random()
             )
         selfKickEmbed = disnake.Embed(
-            title = "Failed to kick: That's Me!",
+            title = "Failed to Kick: That's Me!",
             description = "You tried to kick me, that's bad. I can't kick myself... so kick me with another bot, do it yourself, or choose a different member to kick.",
             colour = disnake.Colour.random()
             )
