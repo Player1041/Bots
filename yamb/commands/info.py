@@ -25,8 +25,19 @@ class Info(commands.Cog):
         ).set_image(
             url = guild.icon.with_size(128).url
         )
-
         await inter.response.send_message(embed = infoEmbed)
+
+
+    @commands.slash_command()
+    async def memberinfo(self, inter, member: disnake.Member = None, id: int = None):
+        memberEmbed = disnake.Embed(
+            title = disnake.User,
+            description = 
+            f""
+        )
+
+
+
 
 def setup(bot):
     bot.add_cog(Info(bot))
