@@ -12,12 +12,12 @@ class Info(commands.Cog):
         infoEmbed = disnake.Embed(
             title = f"Server Info",
             description = 
-                f"Name: {guild.name}\n"
-                f"ID: {guild.id}\n"
-                f"Owner: {guild.owner.mention} / {guild.owner}\n"
-                f"Created At: {disnake.utils.format_dt(guild.created_at, 'D')}\n"
-                f"Member Count (with bots): {guild.member_count}\n"
-                f"Member Count (without bots): {guild.member_count - sum(member.bot for member in guild.members)}\n",
+                f":label: | Name: {guild.name}\n"
+                f":id: | ID: {guild.id}\n"
+                f":crown: | Owner: {guild.owner.mention} / {guild.owner}\n"
+                f":date: | Created At: {disnake.utils.format_dt(guild.created_at, 'D')}\n"
+                f":busts_in_silhouette: | Member Count (with bots): {guild.member_count}\n"
+                f":bust_in_silhouette: | Member Count (without bots): {guild.member_count - sum(member.bot for member in guild.members)}\n",
             colour = disnake.Colour.random()
         ).add_field(
             name = "Server Icon",
@@ -29,14 +29,26 @@ class Info(commands.Cog):
 
 
     @commands.slash_command()
-    async def memberinfo(self, inter, member: disnake.Member = None, id: int = None):
+    async def memberinfo(self, inter, member: disnake.User):
+        """
+        Displays the info of a given member.
+        
+        Parameters
+        ----------
+        member: The user who's info you want. Takes a member (@Yet Another Mod Bot#0829) or ID (963577351994736720)
+        """
+        
         memberEmbed = disnake.Embed(
-            title = disnake.User,
+            title = "User Info",
             description = 
-            f""
-        )
-
-
+            f"Name: {member.name}"
+            ).add_field(
+                name = "User Avatar",
+                value = f"[Avatar URL]({member.avatar.url})"
+            ).set_image(
+                url = member.avatar.with_size(128).url
+            )
+        await inter.response.send_message(embed = memberEmbed)
 
 
 def setup(bot):
