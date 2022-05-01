@@ -38,17 +38,35 @@ class Info(commands.Cog):
         member: The user who's info you want. Takes a member (@Yet Another Mod Bot#0829) or ID (963577351994736720)
         """
         
-        memberEmbed = disnake.Embed(
+        userEmbed = disnake.Embed(
             title = "User Info",
             description = 
-            f"Name: {member.name}"
+            f"Name: {member.name}\n"
+            f"ID: {member.id}\n"
+            f"User Creation Date:  {disnake.utils.format_dt(member.created_at, 'D')}"
             ).add_field(
                 name = "User Avatar",
                 value = f"[Avatar URL]({member.avatar.url})"
             ).set_image(
                 url = member.avatar.with_size(128).url
             )
-        await inter.response.send_message(embed = memberEmbed)
+        if type(member) == disnake.User:
+            await inter.response.send_message(embed = userEmbed)
+        else:
+            if member.premium_since is not None:
+                boost = disnake.utils.format_dt(member.premium_since, 'D')
+            else:
+                boost = "Not a Booster"
+            userEmbed.insert_field_at(
+                index = 0,
+                name = "Guild Member Info",
+                value = 
+                f"Nickname: {member.display_name}\n"
+                f"Top Role: {member.top_role.mention}\n"
+                f"Joined At: {disnake.utils.format_dt(member.joined_at, 'D')}\n"
+                f"Boosted Since: {boost}"
+                )
+            await inter.response.send_message(embed = userEmbed)
 
 
 def setup(bot):
